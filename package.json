@@ -1,11 +1,12 @@
 {
   "name": "react-usestate-quick-create",
-  "publisher": "Cha Shao",
+  "publisher": "ChaShao",
   "displayName": "React useState Quick Create",
   "description": "Quickly create React useState hooks with customizable options",
   "version": "0.1.0",
+  "repository": "https://github.com/Cha-Shao/react-usestate-quick-create.git",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.125.0"
   },
   "categories": [
     "Other"

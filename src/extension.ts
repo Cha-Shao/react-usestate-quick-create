@@ -70,7 +70,7 @@ function parseStateInput(input: string) {
     return `const [${varName}, ${setVarName}] = useState${typeSnippet}(${finalValue});`;
 }
 
-export function activate(context: vscode.Context) {
+export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand('react-usestate-quick-create.createState', async () => {
         // 获取当前活跃的编辑器
         const editor = vscode.window.activeTextEditor;

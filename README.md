@@ -1,71 +1,39 @@
-# react-usestate-quick-create README
+# React useState Quick Create
 
-This is the README for your extension "react-usestate-quick-create". After writing up a brief description, we recommend including the following sections.
+一个专为 React/TypeScript 开发者设计的 VS Code 快捷插件。通过简单的逗号分隔输入，智能、快速地生成带有类型推导和驼峰命名转换的 `useState` 样板代码。
 
-## Features
+## 功能特点 (Features)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **智能命名转换**：输入空格分隔的名称（如 `login modal`），自动转换为小驼峰变量名 `loginModal` 以及大驼峰 Setter 函数 `setLoginModal`。
+- **智能类型推导**：支持省略类型，根据初始值自动推导 `boolean`、`number`、`string` 等基础类型。
+- **复杂类型支持**：完美支持自定义 Interface、泛型以及联合类型（如 `DataInterface | null`）。
 
-For example if there is an image subfolder under your extension project workspace:
+## 使用方法 (Usage)
 
-\!\[feature X\]\(images/feature-x.png\)
+1. 在 `.tsx` 或 `.jsx` 文件中，将光标移动到想要插入代码的位置。
+2. 按下 **`F1`**（或 `Ctrl+Shift+P` / `Cmd+Shift+P`）打开命令面板。
+3. 输入并选择 **`Create React useState`**。
+4. 在弹出的输入框中按照以下格式输入并回车：
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### 示例 1：基础自动类型推导
+* **输入**: `login modal, false`
+* **生成**: `const [loginModal, setLoginModal] = useState<boolean>(false);`
 
-## Requirements
+### 示例 2：显式指定接口类型与 Null 默认值
+* **输入**: `data, DataInterface, null`
+* **生成**: `const [data, setData] = useState<DataInterface | null>(null);`
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### 示例 3：数组与自定义类型
+* **输入**: `data list, DI[], []`
+* **生成**: `const [dataList, setDataList] = useState<DI[]>([]);`
 
-## Extension Settings
+## 快捷键配置 (Optional)
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+如果你觉得每次按 F1 太麻烦，可以在 VS Code 的 `keybindings.json` 中为其绑定快捷键。例如绑定为 `Ctrl+Alt+S`：
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+```json
+{
+  "key": "ctrl+alt+s",
+  "command": "react-usestate-quick-create.createState",
+  "when": "editorTextFocus"
+}
